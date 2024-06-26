@@ -1,0 +1,14 @@
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+build:
+  version: "1.0"
+loans:
+  message: "Welcome to TechnoBank loans related prod APIs "
+  contactDetails:
+    name: "kol - Developer"
+    email: "kol@TechnoBank.com"
+  onCallSupport:
+    - (555) 777-1234
+    - (555) 333-1345

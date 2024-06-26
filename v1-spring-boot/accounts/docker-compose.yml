@@ -1,0 +1,37 @@
+services:
+  accounts:
+    image: "prashdocks/accounts:m1"
+    container_name: "accounts-container"
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - technobank
+  cards:
+    image: "prashdocks/cards:m2"
+    container_name: "cards-container"
+    ports:
+      - "9000:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - technobank
+  loans:
+    image: "prashdocks/loans:m3"
+    container_name: "loans-container"
+    ports:
+      - "8090:8090"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - technobank
+networks:
+  technobank:
+    driver: "bridge"

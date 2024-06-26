@@ -1,0 +1,14 @@
+spring:
+  config:
+    activate:
+      on-profile: "qa"
+build:
+  version: "2.0"
+accounts:
+  message: "Welcome to TechnoBank accounts related qa APIs "
+  contactDetails:
+    name: "Joe - Developer"
+    email: "Joe@TechnoBank.com"
+  onCallSupport:
+    - (555) 555-0987
+    - (555) 523-2543
