@@ -1,0 +1,10 @@
+build:
+  version: "2.0"
+cards:
+  message: "Welcome to TechnoBank cards related qa APIs "
+  contactDetails:
+    name: "Joe - Developer"
+    email: "Joe@TechnoBank.com"
+  onCallSupport:
+    - (555) 555-0987
+    - (555) 523-2543
