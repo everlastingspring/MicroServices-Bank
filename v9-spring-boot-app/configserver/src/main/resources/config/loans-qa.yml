@@ -1,0 +1,10 @@
+build:
+  version: "2.0"
+loans:
+  message: "Welcome to TechnoBank loans related qa APIs "
+  contactDetails:
+    name: "Joe - Developer"
+    email: "Joe@TechnoBank.com"
+  onCallSupport:
+    - (555) 555-0987
+    - (555) 523-2543
