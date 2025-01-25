@@ -1,0 +1,6 @@
+dependencies:
+- name: technobank-common
+  repository: file://../../technobank-common
+  version: 0.1.0
+digest: sha256:8687a490c970e849cd3dd2df339a83200555cfc938d061a1751aa70ae32ce9ce
+generated: "2025-01-23T16:27:16.698396+05:30"
