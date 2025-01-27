@@ -1,0 +1,10 @@
+build:
+  version: "1.0"
+accounts:
+  message: "Welcome to TechnoBank accounts related prod APIs "
+  contactDetails:
+    name: "kol - Developer"
+    email: "kol@TechnoBank.com"
+  onCallSupport:
+    - (555) 777-1234
+    - (555) 333-1345

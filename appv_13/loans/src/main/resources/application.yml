@@ -1,0 +1,62 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: "loans"
+  profiles:
+    active: "prod"
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+  datasource:
+    url: jdbc:h2:mem:accountsdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: ''
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  cloud:
+    kubernetes:
+      discovery:
+        all-namespaces: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    liveness-state:
+      enabled: true
+    readiness-state:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+    shutdown:
+      enabled: true
+  info:
+    env:
+      enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+info:
+  app:
+    name: "loans"
+    description: "Techno Bank Loans Application"
+    version: "1.0.0"
+
+logging:
+  level:
+    com:
+      techno_bank:
+        loans: DEBUG
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"

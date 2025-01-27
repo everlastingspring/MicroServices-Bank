@@ -1,0 +1,33 @@
+server:
+  port: 9010
+spring:
+  application:
+    name: "message"
+  cloud:
+    function:
+      definition: email
+#      definition: email|sms
+    stream:
+      bindings:
+        email-in-0:
+#        emailsms-in-0:
+          destination: send-communication
+          group: ${spring.application.name}
+        email-out-0:
+#        emailsms-out-0:
+          destination: communication-sent
+      kafka:
+        binder:
+          brokers:
+            - localhost:9092
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: abc@xyz.com
+    password: password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

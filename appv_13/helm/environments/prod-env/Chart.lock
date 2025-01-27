@@ -1,0 +1,24 @@
+dependencies:
+- name: technobank-common
+  repository: file://../../technobank-common
+  version: 0.1.0
+- name: configserver
+  repository: file://../../technobank-services/configserver
+  version: 0.1.0
+- name: accounts
+  repository: file://../../technobank-services/accounts
+  version: 0.1.0
+- name: cards
+  repository: file://../../technobank-services/cards
+  version: 0.1.0
+- name: loans
+  repository: file://../../technobank-services/loans
+  version: 0.1.0
+- name: gatewayserver
+  repository: file://../../technobank-services/gatewayserver
+  version: 0.1.0
+- name: message
+  repository: file://../../technobank-services/message
+  version: 0.1.0
+digest: sha256:f004e7fbee342077099a03f459cb71d8ffc1074ac276aafb0fcd53e4a4d1b776
+generated: "2025-01-27T01:33:55.035252+05:30"
