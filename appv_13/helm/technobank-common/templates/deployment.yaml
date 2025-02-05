@@ -18,22 +18,6 @@ spec:
       containers:
       - name: {{ .Values.appLabel }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        readinessProbe:
-          httpGet:
-            port: {{ .Values.containerPort }}
-            path: /actuator/health/readiness
-          timeoutSeconds: 10
-          initialDelaySeconds: 100
-          periodSeconds: 30
-          failureThreshold: 3
-        livenessProbe:
-          httpGet:
-            port: {{ .Values.containerPort }}
-            path: /actuator/health/liveness
-          timeoutSeconds: 10
-          initialDelaySeconds: 100
-          periodSeconds: 30
-          failureThreshold: 3
         ports:
         - containerPort: {{ .Values.containerPort }}
           protocol: TCP

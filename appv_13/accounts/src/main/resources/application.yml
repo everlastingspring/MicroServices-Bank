@@ -111,8 +111,14 @@ info:
 
 logging:
   level:
+    org:
+      springframework:
+        boot:
+          cloud: DEBUG
     com:
       techno_bank:
         accounts: DEBUG
+
+
   pattern:
     level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"

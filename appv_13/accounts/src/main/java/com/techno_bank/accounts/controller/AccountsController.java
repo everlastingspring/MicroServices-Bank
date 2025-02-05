@@ -16,9 +16,9 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
-import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
@@ -40,7 +40,6 @@ import java.util.concurrent.TimeoutException;
 @RestController
 @RequestMapping(path = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 @Validated
-@RequiredArgsConstructor
 public class AccountsController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AccountsController.class);
@@ -51,8 +50,15 @@ public class AccountsController {
 
     private final AccountsContactInfoDto accountsContactInfoDto;
 
-    @Value("${build.version}")
-    private String buildVersion;
+    @Autowired
+    AccountsController(IAccountService iAccountService, Environment environment, AccountsContactInfoDto accountsContactInfoDto) {
+        this.iAccountService = iAccountService;
+        this.environment = environment;
+        this.accountsContactInfoDto = accountsContactInfoDto;
+    }
+
+//    @Value("${build.version}")
+    private String buildVersion = "V1.1";
 
 
 
@@ -206,9 +212,16 @@ public class AccountsController {
     @GetMapping("/build-info")
     public ResponseEntity<String> getBuildInfo() throws TimeoutException {
         LOGGER.debug("getBuildInfo method invoked");
-        throw new TimeoutException();
-//        return ResponseEntity.status(HttpStatus.OK).body(buildVersion);
+//        throw new TimeoutException();
+        return ResponseEntity.status(HttpStatus.OK).body(buildVersion);
     }
+
+
+
+
+
+
+
 
     public ResponseEntity<String> getBuildInfoFallBack(Throwable throwable){
         LOGGER.debug("getBuildInfoFallBack method invoked");
