@@ -4,29 +4,23 @@ server:
 spring:
   application:
     name: "accounts"
-
   profiles:
-    active: "prod"
-
+    active: "default"
   config:
     import: "optional:configserver:http://localhost:8071/"
-
   datasource:
     url: jdbc:h2:mem:accountsdb
     driverClassName: org.h2.Driver
     username: sa
     password: ''
-
   h2:
     console:
       enabled: true
-
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
     show-sql: true
-
   cloud:
     kubernetes:
       discovery:
@@ -47,6 +41,47 @@ spring:
         binder:
           brokers:
             - localhost:9092
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    liveness-state:
+      enabled: true
+    readiness-state:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+    shutdown:
+      access: unrestricted
+  info:
+    env:
+      enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+info:
+  app:
+    name: "accounts"
+    description: "Techno Bank Accounts Application"
+    version: "1.0.0"
+
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          cloud: DEBUG
+    com:
+      techno_bank:
+        accounts: DEBUG
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
 
 resilience4j.circuitbreaker:
   configs:
@@ -74,51 +109,3 @@ resilience4j.ratelimiter:
       timeoutDuration: 1000
       limitRefreshPeriod: 5000
       limitForPeriod: 1
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  health:
-    liveness-state:
-      enabled: true
-    readiness-state:
-      enabled: true
-  endpoint:
-    health:
-      probes:
-        enabled: true
-    shutdown:
-      enabled: true
-  info:
-    env:
-      enabled: true
-  metrics:
-    tags:
-      application: ${spring.application.name}
-
-endpoints:
-  shutdown:
-    enabled: true
-
-
-info:
-  app:
-    name: "accounts"
-    description: "Techno Bank Accounts Application"
-    version: "1.0.0"
-
-logging:
-  level:
-    org:
-      springframework:
-        boot:
-          cloud: DEBUG
-    com:
-      techno_bank:
-        accounts: DEBUG
-
-
-  pattern:
-    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"

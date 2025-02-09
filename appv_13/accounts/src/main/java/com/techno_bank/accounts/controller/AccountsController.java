@@ -50,15 +50,15 @@ public class AccountsController {
 
     private final AccountsContactInfoDto accountsContactInfoDto;
 
+    @Value("${build.version:VA.1}")
+    private String buildVersion;
+
     @Autowired
     AccountsController(IAccountService iAccountService, Environment environment, AccountsContactInfoDto accountsContactInfoDto) {
-        this.iAccountService = iAccountService;
         this.environment = environment;
         this.accountsContactInfoDto = accountsContactInfoDto;
+        this.iAccountService = iAccountService;
     }
-
-//    @Value("${build.version}")
-    private String buildVersion = "V1.1";
 
 
 
@@ -281,5 +281,3 @@ public class AccountsController {
                 .body(accountsContactInfoDto);
     }
 }
-
-

@@ -54,8 +54,8 @@ public class LoansController {
     @Autowired
     private Environment environment;
 
-//    @Value("${build.version}")
-    private String buildVersion = "V1.1";
+    @Value("${build.version:VL.1}")
+    private String buildVersion;
 
     @Operation(
             summary = "Create Loan REST API",

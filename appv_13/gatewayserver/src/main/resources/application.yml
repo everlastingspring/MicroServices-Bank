@@ -16,7 +16,6 @@ spring:
       client:
         health-indicator:
           enabled: false
-
   data:
     redis:
       connect-timeout: 2s
@@ -35,7 +34,7 @@ management:
         include: "*"
   endpoint:
     gateway:
-      enabled: true
+      access: unrestricted
   info:
     env:
       enabled: true

@@ -47,8 +47,8 @@ public class CardsController {
 
     private final Environment environment;
 
-//    @Value("${build.version}")
-    private String buildVersion = "V1.1";
+    @Value("${build.version:VC.1}")
+    private String buildVersion;
 
     @Operation(
             summary = "Create Card REST API",

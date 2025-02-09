@@ -39,7 +39,7 @@ management:
       probes:
         enabled: true
     shutdown:
-      enabled: true
+      access: unrestricted
   info:
     env:
       enabled: true
